@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.4s ease;
+}
+
+body::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+.slider-container {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.25);
+  position: relative;
+  height: 70vh;
+  width: 70vw;
+  overflow: hidden;
+}
+
+.slider {
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  /* Explanation for the values of top anf left is at the bottom */
+  top: -15vh;
+  left: -15vw;
+  transition: 0.4s ease;
+  z-index: 1;
+}
+
+.slider.active {
+  opacity: 1;
+}
+
+.arrow {
+  position: fixed;
+  padding: 20px;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 30px;
+  border: 2px solid orange;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left-arrow {
+  left: calc(15vw - 65px);
+}
+
+.right-arrow {
+  right: calc(15vw - 65px);
+}
+
+/* I think how we come up with 15vw-65px is that :
+
+
+
+- take the left side of 15vw (since the slider container size is 70vw, so it comes with 30vw left (left and right). So each left and right are 15vw.
+
+- Since we want to move the left arrow outside the slider container (70vw), we have to calculate from the left by 15vw and minus by the size of the left arrow container (view the image below for more precise number) to move it further to the left
+
+- therefore we need to calculate 15vw-65px (or 70px)
+
+
+
+Please note that the total of slider container width are:
+
+- 2px left border
+
+- 20px left padding
+
+- around 26px - 30px of icon size
+
+- 20px right padding
+
+- 2px right border
+
+
+
+Total: ~65-74px
+
+
+
+Hope this clear up your explanation */
